@@ -26,10 +26,10 @@ self.addEventListener('install', (event) => {
     '/',
     'https://cdn.logrocket.com/LogRocket.min.js',
     // 'http://fonts.googleapis.com/css?family=Muli|Eczar|Varela%20Round',
-    // 'https://api.travis-ci.org/noahehall/udacity-trainschedule.svg?branch=master',
+    'https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master',
     `${protocol}//localhost:3000/container.js`,
     `${protocol}//localhost:3000/favicon.ico`,
-    `${protocol}//localhost:3000/js/bundle.js`,
+    //`${protocol}//localhost:3000/js/bundle.js`,
     `${protocol}//localhost:3000/rootworker.js`,
   ];
 
