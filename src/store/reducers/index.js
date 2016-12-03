@@ -5,3 +5,20 @@ export function msg (state = Immutable({}), action) {
     Immutable({ ...state, msg: action.text }) :
     state;
 }
+
+export function zomato (state = Immutable({}), action) {
+  if (action.type === 'ZOMATO') {
+    const oldData = state[action.endpoint] !== 'undefined' ?
+      state[action.endpoint] :
+      [];
+
+    return Immutable({
+      [action.endpoint]: [
+        ...oldData,
+        ...action.data,
+      ]
+    });
+  }
+
+  return state;
+}
