@@ -99,7 +99,10 @@ app.get("*", (req, res) => {
     if (!renderProps) return res.status(404).end('Not found.');
     // setup store based on data sent in
     const store = configure(Immutable({
-      msg: 'welcome to your application'
+      msg: 'welcome to your application',
+      zomato: {
+        cities: [],
+      },
     }));
     const initialState = store.getState();
 

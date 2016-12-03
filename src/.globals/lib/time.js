@@ -2,15 +2,6 @@ import Moment from 'moment';
 require("moment-duration-format");
 
 const time = {
-  /**
-   * formats and returns time in format required by bart API
-   * @method getBartTime
-   * @param  {[type]}    time [description]
-   * @return {[type]}    [description]
-   */
-  getBartTime (time) {
-    return time && Moment(time.trim()).format('MM/DD/YYYY h:mm+a').trim();
-  },
 
   getTodaysDate () {
     return Moment().format("YYYY-MM-DD");
