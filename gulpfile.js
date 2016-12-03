@@ -160,22 +160,26 @@ gulp.task('test', () =>
     .on("error", gutil.log)
 );
 
-gulp.task('eslint', () =>
-    // ESLint ignores files with "node_modules" paths.
-    // So, it's best to have gulp ignore the directory as well.
-    // Also, Be sure to return the stream from the task;
-    // Otherwise, the task may end before the stream has finished.
-  gulp.src([ './src/**/*.js', '!node_modules/**' ])
-    // eslint() attaches the lint output to the "eslint" property
-    // of the file object so it can be used by other modules.
-    .pipe(eslint())
-    // eslint.format() outputs the lint results to the console.
-    // Alternatively use eslint.formatEach() (see Docs).
+gulp.task('eslint', () => {
+  /**
+   * Captures eslint log for each file
+   * @method isFixed
+   * @param  {Object} file file.eslint[filePath|messages|errorCount|warningCount]
+   * @return {Boolean} [description]
+   */
+  function isFixed (file) {
+    const didFix = file.eslint && typeof file.eslint.output === 'string';
+    if (didFix) appFuncs.console()(`eslint fixed file: ${file}`);
+
+    return didFix;
+  }
+
+  return gulp.src([ './src/**/*.js', '!node_modules/**' ])
+    .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
-    // To have the process exit with an error code (1) on
-    // lint error, return the stream and pipe to failAfterError last.
-    .pipe(eslint.failAfterError())
-);
+    .pipe(gulpif(isFixed, gulp.dest('./')))
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('stylelint', () =>
   gulp

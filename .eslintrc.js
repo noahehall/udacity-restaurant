@@ -188,7 +188,7 @@ module.exports = {
     "keyword-spacing": 0,
     "line-comment-position": 2,
     "linebreak-style": 2,
-    "lines-around-comment": 2,
+    "lines-around-comment": [2, { "beforeBlockComment": false }],
     "lines-around-directive": 0,
     "max-depth": 0,
     "max-len": 0,
