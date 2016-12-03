@@ -7,16 +7,26 @@ export function msg (state = Immutable({}), action) {
 }
 
 export function zomato (state = Immutable({}), action) {
-  if (action.type === 'ZOMATO') {
+  if (action && action.type === 'ZOMATO') {
     const oldData = state[action.endpoint] !== 'undefined' ?
       state[action.endpoint] :
-      [];
+      {};
+
+    if (action.endpoint !== 'search')
+      return Immutable({
+        ...state,
+        [action.endpoint]: oldData.merge(action.data),
+      });
 
     return Immutable({
-      [action.endpoint]: [
+      ...state,
+      [action.endpoint]: {
         ...oldData,
-        ...action.data,
-      ]
+        [action.city]: {
+          ...oldData[action.city],
+          ...action.data[action.city],
+        }
+      }
     });
   }
 

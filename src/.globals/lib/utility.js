@@ -1,5 +1,9 @@
+import _ from 'lodash';
+
 
 const utility = {
+  _,
+
   /**
   * available console types, dependent on env
   * @see https://developer.mozilla.org/en-US/docs/Web/API/Console
@@ -51,10 +55,8 @@ const utility = {
   * @return {Function} console.method, console.log, or null function
   */
   console (type = 'log', bypass = false) {
-    const thisType = this.consoleTypes(type, bypass);
-
-    if (thisType) {
-      if (console[thisType]) return console[thisType]; // eslint-disable-line no-console
+    if (type) {
+      if (console[type]) return console[type]; // eslint-disable-line no-console
       if (console.log) return console.log; // eslint-disable-line no-console
     }
 

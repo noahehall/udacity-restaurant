@@ -68,7 +68,7 @@ const serviceWorkerFileOptions = {
     'x-sent': true,
     'x-timestamp': Date.now(),
   },
-  root: __dirname
+  root: __dirname,
 };
 
 app.get('/container.js', (req, res) => {
@@ -101,10 +101,12 @@ app.get("*", (req, res) => {
     const store = configure(Immutable({
       msg: 'welcome to your application',
       zomato: {
-        cities: [],
+        cities: {},
+        collections: {},
+        reviews: {},
+        search: {},
       },
     }));
-    const initialState = store.getState();
 
     const InitialComponent = ( // eslint-disable-line no-extra-parens
       <Provider store={store} >
@@ -113,7 +115,7 @@ app.get("*", (req, res) => {
     );
     const html = renderToString(InitialComponent);
 
-    return res.status(200).send(renderFullPage(html, initialState));
+    return res.status(200).send(renderFullPage(html, store.getState()));
   });
 
   return true;

@@ -30,7 +30,7 @@ self.addEventListener('install', (event) => {
     `${protocol}//localhost:3000/container.js`,
     `${protocol}//localhost:3000/favicon.ico`,
     //`${protocol}//localhost:3000/js/bundle.js`,
-    //`${protocol}//localhost:3000/rootworker.js`,
+    `${protocol}//localhost:3000/rootworker.js`,
   ];
 
   /**
@@ -74,7 +74,6 @@ self.addEventListener('fetch', (event) => {
   const neverCacheUrls = [
     `${protocol}//localhost:3000/js/bundle.js`,
     // `${protocol}//logrocket-1356.appspot.com/v1/ingest`, // handled by neverCacheHttpMethods
-    `${protocol}//localhost:3000/rootworker.js`,
   ];
 
   const neverCacheHttpMethods = [
@@ -157,7 +156,12 @@ self.addEventListener('fetch', (event) => {
   }));
 });
 
-
+self.clients.matchAll().then((clients) => {
+  clients.forEach((client) => {
+    console.log(client);
+    client.postMessage('The service worker just started up.');
+  });
+});
 /*
 self.addEventListener('sync', (event) => {
   appFuncs.console()(`sync event: ${JSON.stringify(event)}`);
@@ -172,3 +176,10 @@ self.addEventListener('message', (event) => {
   appFuncs.console()(`message event: ${JSON.stringify(event)}`);
 });
 */
+self.addEventListener('message', (event) => {
+  console.log('Handling message event:', event);
+  event.ports[0].postMessage({
+    error: null,
+    urls: 'hello'
+  });
+});
