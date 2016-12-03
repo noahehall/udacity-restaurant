@@ -137,6 +137,7 @@ gulp.task("watch:client", () => {
 
 gulp.task("watch:server", () =>
   nodemon({
+    args: ['--trace-sync-io'],
     ext: "js",
     ignore: [ "gulpfile.js", "node_modules/*" ],
     script: "dist/server.js",

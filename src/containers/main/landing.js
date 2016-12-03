@@ -2,7 +2,7 @@ import React from 'react';
 import Markdown from 'react-markdown';
 import md from 'readme';
 
-import styles from './main.css';
+import styles from './landing.css';
 
 class Main extends React.Component {
   render () {

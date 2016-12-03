@@ -4,11 +4,11 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actionCreators from 'store/actions/index.js';
 import { bindActionCreators } from 'redux';
-import styles from './page.css';
+import styles from './app.css';
 
 // import checkInternet from 'server/checkconnection.js';
 
-class Page extends React.Component {
+class App extends React.Component {
   static propTypes = {
     children: React.PropTypes.node,
     msg: React.PropTypes.string,
@@ -82,4 +82,4 @@ const mapDispatchToProps = (dispatch) =>
     actions: bindActionCreators(actionCreators, dispatch)
   });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,6 +1,7 @@
 require('./.globals');
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
+import compression from 'compression';
 import express from 'express';
 import fs from 'fs';
 import helmet from 'helmet';
@@ -57,6 +58,7 @@ function renderFullPage (html, preloadedState) {
 }
 
 const app = express();
+app.use(compression());
 app.use(helmet());
 app.use(express.static(`${__dirname}/public`));
 
