@@ -5,6 +5,7 @@ import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
 import StateParser from 'components/stateparser';
+import Cities from 'components/cities';
 
 class Start extends React.Component {
 
@@ -55,6 +56,14 @@ class Start extends React.Component {
              search
            })
         }</div>
+        <section>
+          <Cities
+            cities={cities}
+            collections={collections}
+            getCity={this.props.dispatch.requestZomato}
+            restaurants={search}
+          />
+        </section>
       </div>
     );
   }

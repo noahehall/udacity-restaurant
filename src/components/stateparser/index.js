@@ -1,11 +1,8 @@
 import React from 'react';
 
 export const StateParser = ({ cities, collections, dispatch, reviews, search }) => {
-  const arr = [];
   let city, cityId, collection, collectionId, idx = 0;
   const max = 15;
-  appFuncs._
-    .forOwn(cities, (item) => arr.push(<li key={item.name}>{item.name}, {item.id}</li>));
 
   if (!appFuncs._.isEmpty(collections) && !appFuncs._.isEmpty(cities) && appFuncs._.isEmpty(search)) {
     for (const first in cities) {
@@ -81,9 +78,7 @@ export const StateParser = ({ cities, collections, dispatch, reviews, search }) 
     }
   }
 
-  return (
-    <ul>{arr}</ul>
-  );
+  return null;
 };
 
 StateParser.propTypes = {

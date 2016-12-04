@@ -107,7 +107,7 @@ export function requestZomato ({
               if (success.data)
                 compiled = appFuncs._.keyBy(
                   success.data.user_reviews,
-                  (object) => object.review.user.zomato_handle
+                  (object) => object.review.user.name
                 );
               else compiled = 'no restaurants';
               thisData = {};
