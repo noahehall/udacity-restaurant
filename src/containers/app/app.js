@@ -22,7 +22,7 @@ class App extends React.Component {
   getScripts = () => {
     const nav = typeof navigator !== 'undefined' ? navigator : null;
 
-    return appConsts.nodeOnline || (nav && nav.onLine) ?
+    return 0 && (appConsts.nodeOnline || (nav && nav.onLine)) ?
       [
         { src: 'https://cdn.logrocket.com/LogRocket.min.js', type: 'text/javascript' },
         // to log session urls in production console.log(LogRocket.recordingURL);

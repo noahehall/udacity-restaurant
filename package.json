@@ -49,6 +49,7 @@
     "rollbar": "^0.6.3",
     "seamless-immutable": "^6.3.0",
     "spdy": "^3.4.4",
+    "spotlight": "^1.2.0",
     "st-input-moment": "^0.3.3",
     "xml2js": "^0.4.17"
   },
@@ -64,6 +65,7 @@
     "browserify": "^13.0.1",
     "browserify-postcss": "^0.3.2",
     "chai": "^3.5.0",
+    "del": "^2.2.2",
     "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
     "eslint-config-defaults": "^9.0.0",

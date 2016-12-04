@@ -8,6 +8,7 @@ const
   browserify = require("browserify"),
   buffer = require("vinyl-buffer"),
   checkInternet = require('./src/server/checkconnection.js').checkInternet,
+  del = require('del'),
   env = require('gulp-env'),
   envify = require("loose-envify"),
   es = require('event-stream'),
@@ -30,6 +31,12 @@ const
   stringify = require('stringify'),
   uglify = require('gulp-uglify'),
   watchify = require("watchify");
+
+gulp.task('clean', (fn) => {
+  del([
+    'dist',
+  ], fn);
+});
 
 function createBundler (useWatchify, server) {
   return browserify({

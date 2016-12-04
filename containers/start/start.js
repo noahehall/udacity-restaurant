@@ -5,7 +5,6 @@ import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
 import StateParser from 'components/stateparser';
-import Cities from 'components/cities';
 
 class Start extends React.Component {
 
@@ -39,31 +38,17 @@ class Start extends React.Component {
 
   render () {
     const cities = this.props.zomato.cities || {};
+    const cuisines = this.props.zomato.cuisines || {};
     const search = this.props.zomato.search || {};
     const collections = this.props.zomato.collections || {};
-    const reviews = this.props.zomato.reviews || {};
 
     return (
       <div className='main'>
         <style scoped type='text/css'>{styles}</style>
         <h2>Lets get started!</h2>
         <div>{
-           StateParser({
-             cities,
-             collections,
-             dispatch: this.props.dispatch,
-             reviews,
-             search
-           })
+           StateParser({ cities, collections, cuisines, dispatch: this.props.dispatch, search })
         }</div>
-        <section>
-          <Cities
-            cities={cities}
-            collections={collections}
-            getCity={this.props.dispatch.requestZomato}
-            restaurants={search}
-          />
-        </section>
       </div>
     );
   }

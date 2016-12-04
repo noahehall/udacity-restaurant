@@ -130,7 +130,7 @@ module.exports = {
     "block-spacing": 2,
     "brace-style": 2,
     "callback-return": 0,
-    "camelcase": 2,
+    "camelcase": 1,
     "class-methods-use-this": 0,
     "comma-dangle": ["error", "only-multiline"],
     "comma-spacing": 2,

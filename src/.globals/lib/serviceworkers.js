@@ -1,5 +1,6 @@
 const serviceWorkers = {
   getBlobType (blob, url) {
+
     return url.includes('http://fonts.googleapis.com/css') ?
       // http://stackoverflow.com/questions/2871655/proper-mime-type-for-fonts
       'text/css' :
