@@ -4,7 +4,7 @@ import * as actionCreators from 'store/actions/index.js';
 import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
-import StateParser from 'components/stateparser';
+// import StateParser from 'components/stateparser';
 import Cities from 'components/cities';
 
 class Start extends React.Component {
@@ -15,6 +15,7 @@ class Start extends React.Component {
 
   }
   componentDidMount () {
+    /* get a certain city on startup
     if (appFuncs._.isEmpty(this.props.zomato.cities)) {
       this.props.dispatch.requestZomato({
         params: { q: 'san fran' },
@@ -26,7 +27,7 @@ class Start extends React.Component {
         type: 'cities',
       });
     }
-
+    */
     if (Idbstore) {
       const db = new Idbstore();
       appFuncs.console('dir')(db);
@@ -47,21 +48,14 @@ class Start extends React.Component {
       <div className='main'>
         <style scoped type='text/css'>{styles}</style>
         <h2>Lets get started!</h2>
-        <div>{
-           StateParser({
-             cities,
-             collections,
-             dispatch: this.props.dispatch,
-             reviews,
-             search
-           })
-        }</div>
         <section>
           <Cities
+            addReview={this.props.dispatch.addReview}
             cities={cities}
             collections={collections}
             getCity={this.props.dispatch.requestZomato}
             restaurants={search}
+            reviews={reviews}
           />
         </section>
       </div>

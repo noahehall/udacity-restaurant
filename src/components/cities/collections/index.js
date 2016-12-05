@@ -1,7 +1,17 @@
 import React from 'react';
 import Collection from './collection';
 
-export const Collections = ({ cityId, cityName, collections, getRestaurants, restaurants }) => {
+export const Collections = ({
+  addReview,
+  cityId,
+  cityName,
+  collections,
+  getRestaurants,
+  restaurants,
+  reviews
+}) => {
+  if (appFuncs._.isEmpty(collections)) return null;
+
   const collectionList = [];
 
   if (!appFuncs._.isEmpty(collections))
@@ -9,29 +19,31 @@ export const Collections = ({ cityId, cityName, collections, getRestaurants, res
       collectionList.push(
         <li key={coll}>
           <Collection
+            addReview={addReview}
             cityId={cityId}
+            cityName={cityName}
             collection={collections[coll].collection}
             getRestaurants={getRestaurants}
             restaurants={restaurants[coll] || {}}
+            reviews={reviews}
           />
         </li>
       );
 
 
   return (
-    <article>
-      collections for: {cityName}
-      <ul>{collectionList}</ul>
-    </article>
+    <ul>{collectionList}</ul>
   );
 };
 
 Collections.propTypes = {
-  cityId: React.PropTypes.string,
+  addReview: React.PropTypes.func,
+  cityId: React.PropTypes.number,
   cityName: React.PropTypes.string,
   collections: React.PropTypes.object,
   getRestaurants: React.PropTypes.func,
   restaurants: React.PropTypes.object,
+  reviews: React.PropTypes.object,
 };
 
 export default Collections;

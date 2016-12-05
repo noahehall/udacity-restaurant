@@ -12,11 +12,34 @@ export function zomato (state = Immutable({}), action) {
       state[action.endpoint] :
       {};
 
-    if (action.endpoint !== 'search')
+    if ([ 'search', 'reviews' ].indexOf(action.endpoint) === -1 )
       return Immutable({
         ...state,
         [action.endpoint]: oldData.merge(action.data),
       });
+
+    if (['reviews'].indexOf(action.endpoint) !== -1) {
+      let oldReviews;
+      try {
+        oldReviews = oldData[action.city][action.data.restaurant];
+      } catch (err) {
+        oldReviews = {};
+      }
+
+      return Immutable({
+        ...state,
+        [action.endpoint]: {
+          ...oldData,
+          [action.city]: {
+            ...oldData[action.city],
+            [action.data.restaurant]: {
+              ...oldReviews,
+              ...action.data[action.city][action.data.restaurant],
+            },
+          }
+        }
+      });
+    }
 
     return Immutable({
       ...state,
