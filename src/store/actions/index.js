@@ -8,7 +8,7 @@ const getZomato = axios.create({
     Accept: 'application/json',
     'user-key': '684525f03d623e8bc1d53a44beceecc6',
   },
-  timeout: 3000,
+  timeout: 10000,
 });
 
 export function updateMsg (text) {
