@@ -1,8 +1,15 @@
 import React from 'react';
 import Collections from '../collections';
 
-export const City = ({ collections, getCollection, city, restaurants }) => {
-  const handleSubmit = (e) => {
+export const City = ({
+  addReview,
+  collections,
+  getCollection,
+  city,
+  restaurants,
+  reviews,
+}) => {
+  const handleClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
 
@@ -15,24 +22,36 @@ export const City = ({ collections, getCollection, city, restaurants }) => {
     });
   };
 
+  const hasCollections = !collections.noneExist;
+
   return (
     <article>
       <section>
-        <h2>{city.name}</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor='searchCollections'>
-            <input id='searchCollections' type='search' />
-            <input type='submit' value='Get Collections' />
-          </label>
-        </form>
+        <h2>
+          {city.name}
+          <button
+            id='get-collections'
+            onClick={handleClick}
+            type='submit'
+            value='Get Collections'
+          >
+            Get Collections
+          </button>
+        </h2>
         <section>
-          <Collections
-            cityId={city.id}
-            cityName={city.name}
-            collections={collections}
-            getRestaurants={getCollection}
-            restaurants={restaurants}
-          />
+          {
+            hasCollections ?
+              <Collections
+                addReview={addReview}
+                cityId={city.id}
+                cityName={city.name}
+                collections={collections}
+                getRestaurants={getCollection}
+                restaurants={restaurants}
+                reviews={reviews}
+              /> :
+                <div>No Collections Exist</div>
+          }
         </section>
       </section>
     </article>
@@ -40,10 +59,12 @@ export const City = ({ collections, getCollection, city, restaurants }) => {
 };
 
 City.propTypes = {
+  addReview: React.PropTypes.func,
   city: React.PropTypes.object.isRequired,
   collections: React.PropTypes.object,
   getCollection: React.PropTypes.func.isRequired,
   restaurants: React.PropTypes.object,
+  reviews: React.PropTypes.object,
 };
 
 export default City;

@@ -1,21 +1,31 @@
 import React from 'react';
 import City from './city';
 
-export const Cities = ({ cities, collections, getCity, restaurants }) => {
+export const Cities = ({
+  addReview,
+  cities,
+  collections,
+  getCity,
+  restaurants,
+  reviews,
+}) => {
   const cityList = [];
 
   if (!appFuncs._.isEmpty(cities))
     appFuncs._.forOwn(cities, (city) => {
       const cityCollections = collections[city.name] || {};
       const cityRestaurants = restaurants[city.name] || {};
+      const cityReviews = reviews[city.name] || {};
 
       return cityList.push(
         <City
+          addReview={addReview}
           city={city}
           collections={cityCollections}
           getCollection={getCity}
           key={city.name}
           restaurants={cityRestaurants}
+          reviews={cityReviews}
         />
       );
     });
@@ -52,10 +62,12 @@ export const Cities = ({ cities, collections, getCity, restaurants }) => {
 };
 
 Cities.propTypes = {
+  addReview: React.PropTypes.func,
   cities: React.PropTypes.object,
   collections: React.PropTypes.object,
   getCity: React.PropTypes.func.isRequired,
   restaurants: React.PropTypes.object,
+  reviews: React.PropTypes.object,
 };
 
 export default Cities;

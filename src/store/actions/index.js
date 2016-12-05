@@ -27,6 +27,35 @@ export function zomato ({ data, endpoint, city }) {
   };
 }
 
+export function addReview ({
+  city,
+  userName,
+  restaurant,
+  reviewText,
+}) {
+  const thisData = {
+    [city]: {
+      [restaurant]: {
+        [userName]: {
+          review: {
+            review_text: reviewText,
+            user: {
+              name: userName,
+            },
+          },
+        },
+      },
+    },
+    restaurant,
+  };
+
+  return zomato({
+    city,
+    data: thisData,
+    endpoint: 'reviews',
+  });
+}
+
 export function requestZomato ({
   city = '',
   collection= '',
@@ -76,15 +105,15 @@ export function requestZomato ({
 
             return null;
           case 'collections':
-            if (success.data.code !== 403) {
+            if (success.data.code !== 403 && success.data.collections)
               compiled = appFuncs._.keyBy(
                 success.data.collections,
                 (object) => object.collection.title
               );
+            else compiled = { noneExist: true };
 
-              thisData = {};
-              thisData[city] = compiled;
-            }
+            thisData = {};
+            thisData[city] = compiled;
 
             break;
           case 'search':
@@ -104,13 +133,15 @@ export function requestZomato ({
             return null;
           case 'reviews':
             if (success.data.code !== 403 && city && restaurant) {
-              if (success.data)
+              if (success.data && success.data.user_reviews.length)
                 compiled = appFuncs._.keyBy(
                   success.data.user_reviews,
                   (object) => object.review.user.name
                 );
-              else compiled = 'no restaurants';
+              else compiled = { noneExist: true };
               thisData = {};
+              thisData.restaurant = restaurant;
+              thisData.city = city;
               thisData[city] = {};
               thisData[city][restaurant] = compiled;
               break;
