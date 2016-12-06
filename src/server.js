@@ -103,6 +103,9 @@ app.get("*", (req, res) => {
       zomato: {
         cities: {},
         collections: {},
+        filters: {
+          city: '',
+        },
         reviews: {},
         search: {},
       },

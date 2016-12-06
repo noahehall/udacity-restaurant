@@ -11,6 +11,13 @@ const getZomato = axios.create({
   timeout: 10000,
 });
 
+export function updateFilters (filters) {
+  return {
+    filters,
+    type: 'UPDATE_FILTERS',
+  };
+}
+
 export function updateMsg (text) {
   return {
     text,

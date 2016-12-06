@@ -1,11 +1,12 @@
+// import StateParser from 'components/stateparser';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from 'store/actions/index.js';
+import Cities from 'components/cities';
 import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
-// import StateParser from 'components/stateparser';
-import Cities from 'components/cities';
+import Filters from 'components/filters';
 
 class Start extends React.Component {
 
@@ -14,6 +15,7 @@ class Start extends React.Component {
     zomato: React.PropTypes.object,
 
   }
+
   componentDidMount () {
     /* get a certain city on startup
     if (appFuncs._.isEmpty(this.props.zomato.cities)) {
@@ -38,17 +40,42 @@ class Start extends React.Component {
     return true;
   }
 
+  filterProps = (data, type, filter) => {
+    if (!appFuncs._.isEmpty(data)) {
+      if (!filter) return data;
+
+      switch (type) {
+        case 'city': {
+          return appFuncs._.pickBy(
+            data,
+            (value, key) => key.trim().toLowerCase().includes(filter.trim().toLowerCase())
+          );
+        }
+        default: return data;
+      }
+    }
+
+    return {};
+  }
+
   render () {
-    const cities = this.props.zomato.cities || {};
+    const filters = this.props.zomato.filters || {};
+
+    const cities = this.filterProps(this.props.zomato.cities, 'city', filters.city);
     const search = this.props.zomato.search || {};
     const collections = this.props.zomato.collections || {};
     const reviews = this.props.zomato.reviews || {};
+
 
     return (
       <div className='main'>
         <style scoped type='text/css'>{styles}</style>
         <h2>Lets get started!</h2>
-        <section>
+        <Filters
+          filters={filters}
+          updateFilters={this.props.dispatch.updateFilters}
+        />
+        <article>
           <Cities
             addReview={this.props.dispatch.addReview}
             cities={cities}
@@ -57,7 +84,7 @@ class Start extends React.Component {
             restaurants={search}
             reviews={reviews}
           />
-        </section>
+        </article>
       </div>
     );
   }

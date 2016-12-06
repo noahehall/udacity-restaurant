@@ -7,6 +7,15 @@ export function msg (state = Immutable({}), action) {
 }
 
 export function zomato (state = Immutable({}), action) {
+  if (action && action.type === 'UPDATE_FILTERS')
+    return Immutable({
+      ...state,
+      filters: {
+        ...state.filters,
+        ...action.filters,
+      },
+    });
+
   if (action && action.type === 'ZOMATO') {
     const oldData = state[action.endpoint] !== 'undefined' ?
       state[action.endpoint] :
