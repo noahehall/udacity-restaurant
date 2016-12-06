@@ -105,6 +105,7 @@ app.get("*", (req, res) => {
         collections: {},
         filters: {
           city: '',
+          collection: '',
         },
         reviews: {},
         search: {},

@@ -9,22 +9,33 @@ export const Filters = ({ updateFilters, filters }) => {
       case 'city-filter': {
         return updateFilters({ city: e.target.value });
       }
+      case 'collection-filter': {
+        return updateFilters({ collection: e.target.value });
+      }
       default: return nulll;
     }
   };
 
-  appFuncs.console('dir')(filters);
-  appFuncs.console('dir')(updateFilters);
 
   return (
     <form onChange={handleSubmit} onSubmit={handleSubmit}>
       <h1>Filters</h1>
-      <label htmlFor='city-filter'>
-        City<input
-          defaultValue={filters.city}
-          id='city-filter'
-        />
-      </label>
+      <section>
+        <label htmlFor='city-filter'>
+          City<input
+            defaultValue={filters.city}
+            id='city-filter'
+          />
+        </label>
+      </section>
+      <section>
+        <label htmlFor='collection-filter'>
+          Collection<input
+            defaultValue={filters.collection}
+            id='collection-filter'
+          />
+        </label>
+      </section>
       <input type='submit' />
     </form>
   );

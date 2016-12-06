@@ -40,6 +40,7 @@ class Start extends React.Component {
     return true;
   }
 
+  // pass this down to filter at each appropriate level
   filterProps = (data, type, filter) => {
     if (!appFuncs._.isEmpty(data)) {
       if (!filter) return data;
@@ -61,9 +62,20 @@ class Start extends React.Component {
   render () {
     const filters = this.props.zomato.filters || {};
 
-    const cities = this.filterProps(this.props.zomato.cities, 'city', filters.city);
+    const cities = this.filterProps(
+      this.props.zomato.cities,
+      'city',
+      filters.city
+    );
+
+    const collections = this.filterProps(
+      this.props.zomato.collections,
+      'collection',
+      filters.collection,
+      filters.city,
+    );
+
     const search = this.props.zomato.search || {};
-    const collections = this.props.zomato.collections || {};
     const reviews = this.props.zomato.reviews || {};
 
 
@@ -80,6 +92,7 @@ class Start extends React.Component {
             addReview={this.props.dispatch.addReview}
             cities={cities}
             collections={collections}
+            filterProps={this.filterProps}
             getCity={this.props.dispatch.requestZomato}
             restaurants={search}
             reviews={reviews}
