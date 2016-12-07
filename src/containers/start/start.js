@@ -3,10 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from 'store/actions/index.js';
 import Cities from 'components/cities';
+import filterProps from 'components/filters/';
+import Filters from 'components/filters';
 import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
-import Filters from 'components/filters';
 
 class Start extends React.Component {
 
@@ -40,41 +41,17 @@ class Start extends React.Component {
     return true;
   }
 
-  // pass this down to filter at each appropriate level
-  filterProps = (data, type, filter) => {
-    if (!appFuncs._.isEmpty(data)) {
-      if (!filter) return data;
-
-      switch (type) {
-        case 'city': {
-          return appFuncs._.pickBy(
-            data,
-            (value, key) => key.trim().toLowerCase().includes(filter.trim().toLowerCase())
-          );
-        }
-        default: return data;
-      }
-    }
-
-    return {};
-  }
 
   render () {
     const filters = this.props.zomato.filters || {};
 
-    const cities = this.filterProps(
+    const cities = filterProps(
       this.props.zomato.cities,
       'city',
       filters.city
     );
 
-    const collections = this.filterProps(
-      this.props.zomato.collections,
-      'collection',
-      filters.collection,
-      filters.city,
-    );
-
+    const collections = this.props.zomato.collections || {};
     const search = this.props.zomato.search || {};
     const reviews = this.props.zomato.reviews || {};
 
@@ -92,7 +69,8 @@ class Start extends React.Component {
             addReview={this.props.dispatch.addReview}
             cities={cities}
             collections={collections}
-            filterProps={this.filterProps}
+            filterProps={filterProps}
+            filters={filters}
             getCity={this.props.dispatch.requestZomato}
             restaurants={search}
             reviews={reviews}

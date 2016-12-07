@@ -6,6 +6,7 @@ export const Cities = ({
   cities,
   collections,
   filterProps,
+  filters,
   getCity,
   restaurants,
   reviews,
@@ -14,7 +15,12 @@ export const Cities = ({
 
   if (!appFuncs._.isEmpty(cities))
     appFuncs._.forOwn(cities, (city) => {
-      const cityCollections = collections[city.name] || {};
+      const cityCollections = filterProps(
+        collections[city.name] || {},
+        'collection',
+        filters.collection,
+      );
+
       const cityRestaurants = restaurants[city.name] || {};
       const cityReviews = reviews[city.name] || {};
 
@@ -23,6 +29,8 @@ export const Cities = ({
           addReview={addReview}
           city={city}
           collections={cityCollections}
+          filterProps={filterProps}
+          filters={filters}
           getCollection={getCity}
           key={city.name}
           restaurants={cityRestaurants}
@@ -67,6 +75,7 @@ Cities.propTypes = {
   cities: React.PropTypes.object,
   collections: React.PropTypes.object,
   filterProps: React.PropTypes.func,
+  filters: React.PropTypes.object,
   getCity: React.PropTypes.func.isRequired,
   restaurants: React.PropTypes.object,
   reviews: React.PropTypes.object,

@@ -15,21 +15,10 @@ export const Filters = ({ updateFilters, filters }) => {
       case 'restaurant-filter': {
         return updateFilters({ restaurant: e.target.value });
       }
-      case 'cuisines-filter': {
-        return updateFilters({ cuisines: e.target.value });
+      case 'review-filter': {
+        return updateFilters({ review: e.target.value });
       }
-      case 'average_cost_for_two-filter':
-      case 'aggregate_rating-filter': {
-        const number = parseFloat(e.target.value);
-        const type = e.target.id === 'average_cost_for_two-filter' ?
-          'average_cost_for_two' :
-          'aggregate_rating';
-
-        return number >= 0 ?
-          updateFilters({ [type]: number }) :
-          null;
-      }
-      default: return null;
+      default: return nulll;
     }
   };
 
@@ -54,37 +43,23 @@ export const Filters = ({ updateFilters, filters }) => {
         </label>
       </section>
       <section>
-        <label htmlFor='restaurant-filter'>
-          Restaurant Name<input
+        <label htmlFor='collection-filter'>
+          Restaurants<input
             defaultValue={filters.restaurant}
             id='restaurant-filter'
           />
         </label>
       </section>
       <section>
-        <label htmlFor='cuisines-filter'>
-          {/* TODO: add checkbox for and / or filter*/}
-          Cuisine Type<input
-            defaultValue={filters.cuisines}
-            id='cuisines-filter'
-          />
-        </label>
-      </section>
-      <section>
-        <label htmlFor='aggregate_rating-filter'>
-          Rating<input
-            defaultValue={filters.aggregate_rating}
-            id='aggregate_rating-filter'
-          />
-        </label>
-      </section>
-      <section>
-        <label htmlFor='average_cost_for_two-filter'>
-          Average Cost for Two<input
-            defaultValue={filters.average_cost_for_two}
-            id='average_cost_for_two-filter'
-          />
-        </label>
+        Restaurant Details Filters
+          <section>
+            <label htmlFor='collection-filter'>
+              Reviews<input
+                defaultValue={filters.review}
+                id='review-filter'
+              />
+            </label>
+          </section>
       </section>
       <input type='submit' />
     </form>

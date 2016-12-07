@@ -8,12 +8,13 @@ const getZomato = axios.create({
     Accept: 'application/json',
     'user-key': '684525f03d623e8bc1d53a44beceecc6',
   },
-  timeout: 10000,
+  timeout: 20000,
 });
 
-export function updateFilters (filters) {
+export function updateFilters (filters, mod) {
   return {
     filters,
+    mod,
     type: 'UPDATE_FILTERS',
   };
 }

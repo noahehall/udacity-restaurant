@@ -4,8 +4,10 @@ import Collections from '../collections';
 export const City = ({
   addReview,
   collections,
-  getCollection,
   city,
+  filterProps,
+  filters,
+  getCollection,
   restaurants,
   reviews,
 }) => {
@@ -46,6 +48,8 @@ export const City = ({
                 cityId={city.id}
                 cityName={city.name}
                 collections={collections}
+                filterProps={filterProps}
+                filters={filters}
                 getRestaurants={getCollection}
                 restaurants={restaurants}
                 reviews={reviews}
@@ -62,6 +66,8 @@ City.propTypes = {
   addReview: React.PropTypes.func,
   city: React.PropTypes.object.isRequired,
   collections: React.PropTypes.object,
+  filterProps: React.PropTypes.func,
+  filters: React.PropTypes.object,
   getCollection: React.PropTypes.func.isRequired,
   restaurants: React.PropTypes.object,
   reviews: React.PropTypes.object,
