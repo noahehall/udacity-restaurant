@@ -6,6 +6,8 @@ export const Collections = ({
   cityId,
   cityName,
   collections,
+  filterProps,
+  filters,
   getRestaurants,
   restaurants,
   reviews
@@ -23,8 +25,14 @@ export const Collections = ({
             cityId={cityId}
             cityName={cityName}
             collection={collections[coll].collection}
+            filterProps={filterProps}
+            filters={filters}
             getRestaurants={getRestaurants}
-            restaurants={restaurants[coll] || {}}
+            restaurants={filterProps(
+              restaurants[coll]|| {},
+              'restaurant',
+              filters.restaurant,
+            )}
             reviews={reviews}
           />
         </li>
@@ -41,6 +49,8 @@ Collections.propTypes = {
   cityId: React.PropTypes.number,
   cityName: React.PropTypes.string,
   collections: React.PropTypes.object,
+  filterProps: React.PropTypes.func,
+  filters: React.PropTypes.object,
   getRestaurants: React.PropTypes.func,
   restaurants: React.PropTypes.object,
   reviews: React.PropTypes.object,

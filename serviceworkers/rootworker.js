@@ -73,6 +73,7 @@ self.addEventListener('activate', (event) =>
 self.addEventListener('fetch', (event) => {
   const neverCacheUrls = [
     `${protocol}//localhost:3000/js/bundle.js`,
+    `${protocol}//localhost:3000/start`,
     // `${protocol}//logrocket-1356.appspot.com/v1/ingest`, // handled by neverCacheHttpMethods
   ];
 

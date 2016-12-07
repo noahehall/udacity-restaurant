@@ -1,11 +1,13 @@
+// import StateParser from 'components/stateparser';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from 'store/actions/index.js';
+import Cities from 'components/cities';
+import filterProps from 'components/filters/';
+import Filters from 'components/filters';
 import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
 import styles from './start.css';
-// import StateParser from 'components/stateparser';
-import Cities from 'components/cities';
 
 class Start extends React.Component {
 
@@ -14,6 +16,7 @@ class Start extends React.Component {
     zomato: React.PropTypes.object,
 
   }
+
   componentDidMount () {
     /* get a certain city on startup
     if (appFuncs._.isEmpty(this.props.zomato.cities)) {
@@ -38,26 +41,41 @@ class Start extends React.Component {
     return true;
   }
 
+
   render () {
-    const cities = this.props.zomato.cities || {};
-    const search = this.props.zomato.search || {};
+    const filters = this.props.zomato.filters || {};
+
+    const cities = filterProps(
+      this.props.zomato.cities,
+      'city',
+      filters.city
+    );
+
     const collections = this.props.zomato.collections || {};
+    const search = this.props.zomato.search || {};
     const reviews = this.props.zomato.reviews || {};
+
 
     return (
       <div className='main'>
         <style scoped type='text/css'>{styles}</style>
         <h2>Lets get started!</h2>
-        <section>
+        <Filters
+          filters={filters}
+          updateFilters={this.props.dispatch.updateFilters}
+        />
+        <article>
           <Cities
             addReview={this.props.dispatch.addReview}
             cities={cities}
             collections={collections}
+            filterProps={filterProps}
+            filters={filters}
             getCity={this.props.dispatch.requestZomato}
             restaurants={search}
             reviews={reviews}
           />
-        </section>
+        </article>
       </div>
     );
   }
