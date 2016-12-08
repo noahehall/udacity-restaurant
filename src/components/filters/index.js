@@ -36,7 +36,7 @@ export const Filters = ({ updateFilters, filters }) => {
 
   return (
     <form onChange={handleSubmit} onSubmit={handleSubmit}>
-      <h1>Filters</h1>
+      <h2>Filters</h2>
       <section>
         <label htmlFor='city-filter'>
           Cities<input

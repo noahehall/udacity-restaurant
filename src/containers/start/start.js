@@ -58,7 +58,7 @@ class Start extends React.Component {
     return (
       <div className='main'>
         <style scoped type='text/css'>{styles}</style>
-        <h2>Lets get started!</h2>
+        <h1>Lets get started!</h1>
         <Filters
           filters={filters}
           updateFilters={this.props.dispatch.updateFilters}

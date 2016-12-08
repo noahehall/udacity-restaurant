@@ -142,19 +142,32 @@ gulp.task("watch:client", () => {
     .on("update", rebundle);
 });
 
-gulp.task("watch:server", () =>
-  nodemon({
+gulp.task("watch:server", (cb) => {
+  let called = false;
+  const stream = nodemon({
     args: ['--trace-sync-io'],
     ext: "js",
     ignore: [ "gulpfile.js", "node_modules/*" ],
     script: "dist/server.js",
     tasks: [ 'copy:service-workers', 'bundle:server' ],
-    watch: [ 'src/server.js', 'dist/public/js/bundle.js', 'src/serviceworkers' ]
-  })
+    watch: [ 'src/server.js', 'src/serviceworkers', 'dist/public/js/bundle.js' ]
+  });
+
+  stream
     .on("error", gutil.log)
+    .on("start", () => {
+      // ensure start only got called once
+      if (!called) cb();
+      called = true;
+    })
     .on("change", gutil.log)
     .on("restart", gutil.log)
-);
+    .on('crash', () => {
+      appFuncs.console('error')('Application has crashed!\n');
+      // restart the server in 5 seconds
+      stream.emit('restart', 5);
+    });
+});
 
 gulp.task('test', () =>
   gulp.src(['./src/**/*.test.js'], { read: false })
