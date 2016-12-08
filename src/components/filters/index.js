@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './filters.css';
 
 export const Filters = ({ updateFilters, filters }) => {
   const handleSubmit = (e) => {
@@ -35,7 +36,12 @@ export const Filters = ({ updateFilters, filters }) => {
 
 
   return (
-    <form onChange={handleSubmit} onSubmit={handleSubmit}>
+    <form
+      className='filters-form'
+      onChange={handleSubmit}
+      onSubmit={handleSubmit}
+    >
+      <style scoped type='text/css'>{styles}</style>
       <h2>Filters</h2>
       <section>
         <label htmlFor='city-filter'>

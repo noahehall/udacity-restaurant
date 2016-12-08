@@ -1,6 +1,7 @@
 .page {
   background-color: white;
   padding: 20px;
+  max-width: 600px;
 
   & .navbar {
     list-style-type: none;
