@@ -17,6 +17,7 @@
       "ignore": ["after-comment"],
     } ],
     "unit-whitelist": ["em", "rem", "%", "px"],
-    "selector-list-comma-newline-after": "never-multi-line"
+    "selector-list-comma-newline-after": "always",
+    "selector-pseudo-element-colon-notation": "double"
   }
 }
