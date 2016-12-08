@@ -262,15 +262,16 @@ gulp.task("default", gulpSequence(
   'test',
   'copy:server-certs',
   'copy:service-workers',
-  "watch:server",
-  "watch:client"
+  "watch:client",
+  "bundle:server",
+  "watch:server"
 ));
 
 gulp.task("prod", gulpSequence(
   'copy:server-certs',
   'copy:service-workers',
-  'bundle:server',
-  'bundle:client'
+  'bundle:client',
+  'bundle:server'
 ));
 
 gulp.task('lint', gulpSequence(
