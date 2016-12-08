@@ -37,12 +37,12 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className='page'>
+      <article className='page'>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           link={[
             {
-              'href': 'http://fonts.googleapis.com/css?family=Muli|Eczar|Varela Round',
+              'href': 'http://fonts.googleapis.com/css?family=Muli|Varela%20Round',
               'rel': 'stylesheet',
               type:'text/css',
             },
@@ -55,19 +55,21 @@ class App extends React.Component {
           title='For Your Progressive React Starterkit'
         />
         <style scoped type='text/css'>{styles}</style>
-        <ul className='navbar'>
-          <li className='navitem'>
-            <Link activeClassName='active' className='navlink' onlyActiveOnIndex={true} to={`/`} >Home</Link>
-          </li>
-          <li className='navitem'>
-            <Link activeClassName='active' className='navlink' to={`start`} >Start</Link>
-          </li>
-          <li className='navitem ra'>
-            <div>{this.props.msg}</div>
-          </li>
-        </ul>
+        <nav>
+          <ul className='navbar'>
+            <li className='navitem'>
+              <Link activeClassName='active' className='navlink' onlyActiveOnIndex={true} to={`/`} >Home</Link>
+            </li>
+            <li className='navitem'>
+              <Link activeClassName='active' className='navlink' to={`start`} >Start</Link>
+            </li>
+            <li className='navitem ra'>
+              <section>{this.props.msg}</section>
+            </li>
+          </ul>
+        </nav>
         {this.props.children}
-      </div>
+      </article>
     );
   }
 }

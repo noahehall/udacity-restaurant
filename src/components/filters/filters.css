@@ -1,4 +1,25 @@
 .filters-form {
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
+  font-size: 16px;
+  font-family: Muli;
+
+  & .control-container {
+    & > label {
+      display: inline-block;
+      display: table;
+      width: 100%;
+
+      & > span {
+        display: table-cell;
+        width: 100px;
+      }
+
+      & > input {
+        display: table-cell;
+        margin-left: 10px;
+        width: auto;
+      }
+    }
+  }
 }
