@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from 'store/actions/index.js';
 import Cities from 'components/cities';
-import filterProps from 'components/filters/';
+import filterProps from 'components/filters/filterprops.js';
 import Filters from 'components/filters';
 import Idbstore from 'serviceworkers/idb/idb';
 import React from 'react';
@@ -43,7 +43,7 @@ class Start extends React.Component {
 
 
   render () {
-    const filters = this.props.zomato.filters || {};
+    const filters = this.props.zomato.filters;
 
     const cities = filterProps(
       this.props.zomato.cities,
@@ -54,7 +54,6 @@ class Start extends React.Component {
     const collections = this.props.zomato.collections || {};
     const search = this.props.zomato.search || {};
     const reviews = this.props.zomato.reviews || {};
-
 
     return (
       <div className='main'>
