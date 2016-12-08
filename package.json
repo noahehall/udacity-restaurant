@@ -13,6 +13,7 @@
     "start": "./node_modules/.bin/gulp",
     "nodeOnline": "node ./src/server/checkconnection.js",
     "security": "./node_modules/.bin/nsp check",
+    "predev": "npm run stylefmt",
     "dev": "NODE_ENV=development && npm run start",
     "prod": "NODE_ENV=production ./node_modules/.bin/gulp prod && node dist/server.js",
     "prebuild": "npm run eslint-fix",
@@ -23,7 +24,8 @@
     "lint": "./node_modules/.bin/gulp lint",
     "eslint-unused": "./node_modules/.bin/eslint-find-rules -u ./.eslintrc -n",
     "eslint-fix": "./node_modules/.bin/eslint --fix \"./src/**/*.js\" --config ./.eslintrc.js",
-    "stylelint": "./node_modules/.bin/gulp stylelint"
+    "stylefmt": "./node_modules/.bin/stylefmt -r src/**/*.css --diff",
+    "stylelint": "npm run stylefmt && ./node_modules/.bin/gulp stylelint"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -62,6 +64,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
+    "browser-sync": "^2.18.2",
     "browserify": "^13.0.1",
     "browserify-postcss": "^0.3.2",
     "chai": "^3.5.0",
@@ -79,6 +82,7 @@
     "flow-bin": "^0",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
+    "gulp-cache-bust": "^1.1.0",
     "gulp-copy": "0.0.2",
     "gulp-env": "^0.4.0",
     "gulp-eslint": "^3.0.1",
@@ -112,6 +116,7 @@
     "sinon-chai": "^2.8.0",
     "stringify": "^5.1.0",
     "stylefmt": "github:morishitter/stylefmt",
+    "stylelint-csstree-validator": "^1.0.3",
     "uglifyify": "^3.0.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

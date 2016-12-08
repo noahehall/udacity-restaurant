@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './filters.css';
 
 export const Filters = ({ updateFilters, filters }) => {
   const handleSubmit = (e) => {
@@ -35,52 +36,57 @@ export const Filters = ({ updateFilters, filters }) => {
 
 
   return (
-    <form onChange={handleSubmit} onSubmit={handleSubmit}>
-      <h1>Filters</h1>
-      <section>
+    <form
+      className='filters-form'
+      onChange={handleSubmit}
+      onSubmit={handleSubmit}
+    >
+      <style scoped type='text/css'>{styles}</style>
+      <h2>Filters</h2>
+      <section className='control-container'>
         <label htmlFor='city-filter'>
-          Cities<input
+          <span>Cities</span><input
             defaultValue={filters.city}
             id='city-filter'
           />
         </label>
       </section>
-      <section>
+      <section className='control-container'>
         <label htmlFor='collection-filter'>
-          Collections<input
+          <span>Collections</span><input
             defaultValue={filters.collection}
             id='collection-filter'
           />
         </label>
       </section>
-      <section>
+      <section className='control-container'>
         <label htmlFor='restaurant-filter'>
-          Restaurant Name<input
+          <span>Restaurant Name</span><input
             defaultValue={filters.restaurant}
             id='restaurant-filter'
           />
         </label>
       </section>
-      <section>
+      <section className='control-container'>
         <label htmlFor='cuisines-filter'>
           {/* TODO: add checkbox for and / or filter*/}
-          Cuisine Type<input
+          <span>Cuisine Type</span><input
             defaultValue={filters.cuisines}
             id='cuisines-filter'
           />
         </label>
       </section>
-      <section>
+      <section className='control-container'>
         <label htmlFor='aggregate_rating-filter'>
-          Rating<input
+          <span>Rating</span><input
             defaultValue={filters.aggregate_rating}
             id='aggregate_rating-filter'
           />
         </label>
       </section>
-      <section>
+      <section className='control-container'>
         <label htmlFor='average_cost_for_two-filter'>
-          Average Cost for Two<input
+          <span>Average Cost for Two</span><input
             defaultValue={filters.average_cost_for_two}
             id='average_cost_for_two-filter'
           />

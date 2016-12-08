@@ -25,7 +25,7 @@ self.addEventListener('install', (event) => {
   const urlsToPrefetch = [
     '/',
     //'https://cdn.logrocket.com/LogRocket.min.js',
-    'http://fonts.googleapis.com/css?family=Muli|Eczar|Varela%20Round',
+    'http://fonts.googleapis.com/css?family=Muli|Varela%20Round',
     'https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master',
     `${protocol}//localhost:3000/container.js`,
     `${protocol}//localhost:3000/favicon.ico`,

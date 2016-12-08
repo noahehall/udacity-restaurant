@@ -7,10 +7,10 @@ import styles from './landing.css';
 class Landing extends React.Component {
   render () {
     return (
-      <div className='main'>
+      <article className='main'>
         <style scoped type='text/css'>{styles}</style>
         <Markdown source={md} />
-      </div>
+      </article>
     );
   }
 }

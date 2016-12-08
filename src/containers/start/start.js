@@ -56,26 +56,24 @@ class Start extends React.Component {
     const reviews = this.props.zomato.reviews || {};
 
     return (
-      <div className='main'>
+      <article className='main'>
         <style scoped type='text/css'>{styles}</style>
-        <h2>Lets get started!</h2>
+        <h1>Lets get started!</h1>
         <Filters
           filters={filters}
           updateFilters={this.props.dispatch.updateFilters}
         />
-        <article>
-          <Cities
-            addReview={this.props.dispatch.addReview}
-            cities={cities}
-            collections={collections}
-            filterProps={filterProps}
-            filters={filters}
-            getCity={this.props.dispatch.requestZomato}
-            restaurants={search}
-            reviews={reviews}
-          />
-        </article>
-      </div>
+        <Cities
+          addReview={this.props.dispatch.addReview}
+          cities={cities}
+          collections={collections}
+          filterProps={filterProps}
+          filters={filters}
+          getCity={this.props.dispatch.requestZomato}
+          restaurants={search}
+          reviews={reviews}
+        />
+      </article>
     );
   }
 }

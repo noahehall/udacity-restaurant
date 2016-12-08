@@ -4,10 +4,10 @@ import styles from './notfound.css';
 class notfound extends Component {
   render () {
     return (
-      <div className='notfound'>
+      <article className='notfound'>
         <style scoped type='text/css'>{styles}</style>
         Sorry we could not find that route
-      </div>
+      </article>
     );
   }
 }

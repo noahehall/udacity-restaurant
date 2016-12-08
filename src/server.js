@@ -46,7 +46,7 @@ function renderFullPage (html, preloadedState) {
         ${head.script}
       </head>
       <body>
-        <div id="root">${html}</div>
+        <article id="root">${html}</article>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
         </script>
