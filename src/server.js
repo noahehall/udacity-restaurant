@@ -137,5 +137,5 @@ spdy.createServer(options, app)
       return process.exit(1);
     }
 
-    appFuncs.console('info', true)(`Server running: ${!appConsts.isProd ? 'http://' : 'https://'}localhost:${port}`);
+    appFuncs.console('info', true)(`Server running: ${!appConsts.isProd ? 'http://127.0.0.1' : 'https://localhost'}:${port}`);
   });

@@ -1,39 +1,8 @@
 import React from 'react';
-import * as Table from 'reactabular';
 import styles from './review.css';
 
 export const Review = ({ review }) => {
   if (appFuncs._.isEmpty(review)) return null;
-
-  const rows = [
-    {
-      key: 'username',
-      value: review.user.name,
-    },
-    {
-      key: 'rating',
-      value: review.rating,
-    },
-    {
-      key: 'timestamp',
-      value: review.review_time_friendly,
-    },
-  ];
-
-  const columns = [
-    {
-      header: {
-        label: 'Key',
-      },
-      property: 'key',
-    },
-    {
-      header: {
-        label: 'Value',
-      },
-      property: 'value',
-    },
-  ];
 
   return (
     <section className='review-entry'>
@@ -41,15 +10,22 @@ export const Review = ({ review }) => {
       <section>
         About Reviewer
       </section>
-      <Table.Provider
-        className='reactabular'
-        columns={columns}
-      >
-        <Table.Body
-          rowKey='key'
-          rows={rows}
-        />
-      </Table.Provider>
+      <table className='review-table'>
+        <tbody>
+          <tr>
+            <td>Username</td>
+            <td>{review.user.name}</td>
+          </tr>
+          <tr>
+            <td>Rating</td>
+            <td>{review.rating}</td>
+          </tr>
+          <tr>
+            <td>Timestamp</td>
+            <td>{review.review_time_friendly}</td>
+          </tr>
+        </tbody>
+      </table>
       <section className='review-text'>
         {review.review_text}
       </section>
