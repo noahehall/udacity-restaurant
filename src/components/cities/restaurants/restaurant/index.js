@@ -32,10 +32,12 @@ export const Restaurant = ({
     e.stopPropagation();
     const reviewText = e.target['review-text'].value.trim();
     const userName = e.target['user-name'].value.trim();
+    const rating = parseFloat(e.target.rating.value.trim());
 
     if (reviewText && userName)
       addReview({
         city: cityName,
+        rating,
         restaurant: restaurant.name,
         reviewText,
         userName,
@@ -64,15 +66,21 @@ export const Restaurant = ({
           />
         </figure>
         <section className='restaurant-info'>
-          <div>
+          <section>
             Cuisine: {restaurant.cuisines}
-          </div>
-          <div>
+          </section>
+          <section>
             Avg Price for 2: {restaurant.average_cost_for_two}
-          </div>
-          <div>
+          </section>
+          <section>
             5 Star Rating: {restaurant.user_rating.aggregate_rating}
-          </div>
+          </section>
+          <section>
+            Location: {restaurant.location.address}
+          </section>
+          <section>
+            Operating Hours: 1pm - 3am
+          </section>
         </section>
         <button
           className='get-reviews'
@@ -81,7 +89,10 @@ export const Restaurant = ({
           Get Reviews
         </button>
       </section>
-      <form onSubmit={handleSubmit}>
+      <form
+        className='add-review'
+        onSubmit={handleSubmit}
+      >
         <section className='control-container'>
           <label htmlFor='review-text'>
             <span>Review: </span>
@@ -92,6 +103,12 @@ export const Restaurant = ({
           <label htmlFor='user-name'>
             <span>Name: </span>
             <input id='user-name' />
+          </label>
+        </section>
+        <section className='control-container'>
+          <label htmlFor='rating'>
+            <span>Rating: </span>
+            <input id='rating' />
           </label>
         </section>
         <input type='submit' value='Add Review' />

@@ -33,9 +33,9 @@ export const Restaurants = ({
   }
 
   return (
-    <article className='restaurants-all'>
+    <section className='restaurants-all'>
       {restaurantList}
-    </article>
+    </section>
   );
 };
 

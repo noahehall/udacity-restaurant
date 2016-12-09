@@ -37,7 +37,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <article className='page'>
+      <article className='app'>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           link={[

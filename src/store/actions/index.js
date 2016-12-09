@@ -37,16 +37,19 @@ export function zomato ({ data, endpoint, city }) {
 
 export function addReview ({
   city,
-  userName,
+  rating,
   restaurant,
   reviewText,
+  userName,
 }) {
   const thisData = {
     [city]: {
       [restaurant]: {
         [userName]: {
           review: {
+            rating,
             review_text: reviewText,
+            review_time_friendly: 'A few seconds ago',
             user: {
               name: userName,
             },

@@ -152,7 +152,9 @@ input {
   }
 }
 
-button {
+button,
+input[type=button],
+input[type=submit] {
   box-sizing: content-box;
   background: none;
   border: 0;
@@ -231,7 +233,9 @@ input {
 
 /* default style */
 /* http://tympanus.net/Development/CreativeButtons/ */
-button {
+button,
+input[type=button],
+input[type=submit] {
   padding: 5px;
   overflow: hidden;
   background-color: #fcad26;
@@ -247,23 +251,24 @@ button {
   outline: none;
   transition: all 0.3s;
 
-  &::after {
-    background: rgba(255, 255, 255, 0.1);
-    height: 200%;
-    margin: -5px 0 0 -5px;
+  &:active,
+  &:hover {
     right: 0;
     top: 0;
+    border-style: dashed;
+    border-width: 3px;
+    border-color: red;
     transform-origin: 0 0;
-    transform: rotate(-20deg);
-    width: 30%;
+    transform: rotate(-2deg);
     z-index: 1;
   }
 }
 
-.page {
+.app {
   background-color: white;
   padding: 20px;
   max-width: 600px;
+  margin: 0 auto;
 
   & h1,
   & h2,
