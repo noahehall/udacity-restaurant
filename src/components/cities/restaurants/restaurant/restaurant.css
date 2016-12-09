@@ -21,7 +21,17 @@
     }
   }
 
+  & .add-review {
+    display: inline-block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+
   & .control-container {
+    font-size: 0.8rem;
+    padding-top: 5px;
+
     & > label {
       display: inline-block;
       display: table;
@@ -29,6 +39,7 @@
 
       & > span {
         display: table-cell;
+        vertical-align: middle;
         width: 100px;
       }
 

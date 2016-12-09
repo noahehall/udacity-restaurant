@@ -8,7 +8,8 @@ export const Reviews = ({ reviews }) => {
 
   for (const review in reviews)
     allReviews.push(
-      <Review key={reviews[review].review.user.name}
+      <Review
+        key={reviews[review].review.user.name}
         review={reviews[review].review}
       />
     );
