@@ -37,11 +37,6 @@ class Start extends React.Component {
     } else appFuncs.console('info')('db not found!');
   }
 
-  shouldComponentUpdate () {
-    return true;
-  }
-
-
   render () {
     const filters = this.props.zomato.filters;
 
