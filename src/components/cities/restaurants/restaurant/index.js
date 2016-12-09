@@ -119,7 +119,7 @@ export const Restaurant = ({
             <Reviews
               reviews={reviews}
             /> :
-              <div>No Reviews Exist</div>
+            <div>No Reviews Exist</div>
         }
       </article>
     </article>

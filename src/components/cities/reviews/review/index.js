@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Table from 'reactabular-table';
+import * as Table from 'reactabular';
 import styles from './review.css';
 
 export const Review = ({ review }) => {

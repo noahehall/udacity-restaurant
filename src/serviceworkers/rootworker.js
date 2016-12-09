@@ -160,11 +160,9 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('sync', (event) => {
   appFuncs.console()(`sync event: ${JSON.stringify(event)}`);
 });
-
 self.addEventListener('push', (event) => {
   appFuncs.console()(`push event: ${JSON.stringify(event)}`);
 });
-
 self.addEventListener('message', (event) => {
   // event.data === whatever sent from Client.postMessage
   appFuncs.console()(`message event: ${JSON.stringify(event)}`);

@@ -189,7 +189,7 @@ gulp.task('eslint', () => {
    */
   function isFixed (file) {
     const didFix = file.eslint && typeof file.eslint.output === 'string';
-    if (didFix) appFuncs.console()(`eslint fixed file: ${file}`);
+    if (didFix) appFuncs.console()(`eslint fixed file: ${file.filePath}`);
 
     return didFix;
   }
@@ -197,7 +197,7 @@ gulp.task('eslint', () => {
   return gulp.src([ './src/**/*.js', '!node_modules/**' ])
     .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
-    .pipe(gulpif(isFixed, gulp.dest('./')))
+    .pipe(gulpif(isFixed, gulp.dest('./src')))
     .pipe(eslint.failAfterError());
 });
 

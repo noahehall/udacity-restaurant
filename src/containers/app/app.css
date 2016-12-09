@@ -182,7 +182,9 @@ input {
   padding: 5px;
   transition: box-shadow 0.3s, border 0.3s;
 
-  & :focus {
+  &:focus,
+  &:active,
+  &:hover {
     border: solid 1px #707070;
     box-shadow: 0 0 5px 1px #969696;
   }
@@ -193,7 +195,9 @@ input {
   padding: 5px;
   transition: border 0.3s;
 
-  & :focus {
+  &:focus,
+  &:active,
+  &:hover {
     border: solid 5px #969696;
   }
 }
@@ -204,7 +208,9 @@ input {
   padding: 5px;
   transition: box-shadow 0.3s, border 0.3s;
 
-  & :focus {
+  &:focus,
+  &:active,
+  &:hover {
     border: solid 5px #969696;
   }
 }
@@ -215,7 +221,9 @@ input {
   padding: 5px;
   transition: border 0.3s;
 
-  & :focus {
+  &:focus,
+  &:active,
+  &:hover {
     border-bottom: solid 2px #969696;
   }
 }
@@ -226,7 +234,7 @@ input {
   padding: 5px;
   transition: box-shadow 0.3s;
 
-  & :focus {
+  &:focus {
     box-shadow: inset 1px 1px 2px 0 #c9c9c9;
   }
 }
@@ -252,7 +260,8 @@ input[type=submit] {
   transition: all 0.3s;
 
   &:active,
-  &:hover {
+  &:hover,
+  &:focus {
     right: 0;
     top: 0;
     border-style: dashed;

@@ -60,7 +60,7 @@ export const City = ({
                 restaurants={restaurants}
                 reviews={reviews}
               /> :
-                <div>No Collections Exist</div>
+              <div>No Collections Exist</div>
           }
         </section>
       </section>
