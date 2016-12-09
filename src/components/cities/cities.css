@@ -1,0 +1,8 @@
+.cities {
+  margin: 0 auto;
+  padding: 20px;
+
+  & .form-get-cities {
+    text-align: center;
+  }
+}

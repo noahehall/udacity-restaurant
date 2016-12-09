@@ -1,5 +1,6 @@
 import React from 'react';
 import City from './city';
+import styles from './cities.css';
 
 export const Cities = ({
   addReview,
@@ -58,8 +59,9 @@ export const Cities = ({
   };
 
   return (
-    <article>
-      <form onSubmit={handleSubmit}>
+    <article className='cities'>
+      <style scoped type='text/css'>{styles}</style>
+      <form className='form-get-cities' onSubmit={handleSubmit}>
         <label htmlFor='search'>
           <input id='search' type='search' />
           <input type='submit' value='Get City' />

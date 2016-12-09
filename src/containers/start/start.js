@@ -61,6 +61,7 @@ class Start extends React.Component {
         <h1>Lets get started!</h1>
         <Filters
           filters={filters}
+          hasCities={!appFuncs._.isEmpty(this.props.zomato.cities)}
           updateFilters={this.props.dispatch.updateFilters}
         />
         <Cities

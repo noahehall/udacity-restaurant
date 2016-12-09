@@ -15,7 +15,7 @@ export const Reviews = ({ reviews }) => {
 
   return (
     <article>
-      <h4>Restaurant Reviews</h4>
+      <h5>Restaurant Reviews</h5>
       {allReviews}
     </article>
   );
