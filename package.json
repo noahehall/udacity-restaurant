@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "compression": "^1.6.2",
     "express": "^4.14.0",
     "helmet": "^3",
     "idb": "github:noahehall/idb#isomorphic-imports",
