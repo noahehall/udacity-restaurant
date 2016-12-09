@@ -12,7 +12,7 @@ export const Review = ({ review }) => {
     },
     {
       key: 'rating',
-      value: review.rating,
+      value: `${review.rating || 0}/5 stars`,
     },
     {
       key: 'timestamp',

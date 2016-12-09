@@ -51,7 +51,7 @@ export const Restaurant = ({
         <figure>
           <figcaption>
             <h5>
-              <a
+              <a className='restaurant-link'
                 href={restaurant.url}
                 target='_blank'
                 >
@@ -108,7 +108,14 @@ export const Restaurant = ({
         <section className='control-container'>
           <label htmlFor='rating'>
             <span>Rating: </span>
-            <input id='rating' />
+            <select defaultValue='0' id='rating'>
+              <option value='0'>0/5 star</option>
+              <option value='1'>1/5 star</option>
+              <option value='2'>2/5 star</option>
+              <option value='3'>3/5 star</option>
+              <option value='4'>4/5 star</option>
+              <option value='5'>5/5 star</option>
+            </select>
           </label>
         </section>
         <input type='submit' value='Add Review' />

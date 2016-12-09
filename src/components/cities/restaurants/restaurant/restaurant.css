@@ -18,6 +18,28 @@
   & figure {
     & h5 {
       text-align: center;
+
+      & .restaurant-link {
+        font-size: 1.2rem;
+        text-decoration: none;
+        display: inline-block;
+        padding: 2px;
+
+        &:link {
+          color: hotpink;
+        }
+
+        &:visited {
+          color: black;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: underline;
+          font-size: 1.3rem;
+        }
+      }
     }
   }
 
