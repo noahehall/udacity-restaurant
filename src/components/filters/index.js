@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './filters.css';
 
-export const Filters = ({ updateFilters, filters }) => {
+export const Filters = ({ updateFilters, filters, hasCities }) => {
+  if (!hasCities) return null;
+
   const handleSubmit = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -42,10 +44,11 @@ export const Filters = ({ updateFilters, filters }) => {
       onSubmit={handleSubmit}
     >
       <style scoped type='text/css'>{styles}</style>
-      <h2>Filters</h2>
+      <h4>Filters</h4>
       <section className='control-container'>
         <label htmlFor='city-filter'>
-          <span>Cities</span><input
+          <span>Cities</span>
+          <input
             defaultValue={filters.city}
             id='city-filter'
           />
@@ -53,7 +56,8 @@ export const Filters = ({ updateFilters, filters }) => {
       </section>
       <section className='control-container'>
         <label htmlFor='collection-filter'>
-          <span>Collections</span><input
+          <span>Collections</span>
+          <input
             defaultValue={filters.collection}
             id='collection-filter'
           />
@@ -61,7 +65,8 @@ export const Filters = ({ updateFilters, filters }) => {
       </section>
       <section className='control-container'>
         <label htmlFor='restaurant-filter'>
-          <span>Restaurant Name</span><input
+          <span>Restaurant Name</span>
+          <input
             defaultValue={filters.restaurant}
             id='restaurant-filter'
           />
@@ -70,7 +75,8 @@ export const Filters = ({ updateFilters, filters }) => {
       <section className='control-container'>
         <label htmlFor='cuisines-filter'>
           {/* TODO: add checkbox for and / or filter*/}
-          <span>Cuisine Type</span><input
+          <span>Cuisine Type</span>
+          <input
             defaultValue={filters.cuisines}
             id='cuisines-filter'
           />
@@ -78,7 +84,8 @@ export const Filters = ({ updateFilters, filters }) => {
       </section>
       <section className='control-container'>
         <label htmlFor='aggregate_rating-filter'>
-          <span>Rating</span><input
+          <span>Rating</span>
+          <input
             defaultValue={filters.aggregate_rating}
             id='aggregate_rating-filter'
           />
@@ -86,19 +93,26 @@ export const Filters = ({ updateFilters, filters }) => {
       </section>
       <section className='control-container'>
         <label htmlFor='average_cost_for_two-filter'>
-          <span>Average Cost for Two</span><input
+          <span>Average Cost for Two</span>
+          <input
             defaultValue={filters.average_cost_for_two}
             id='average_cost_for_two-filter'
           />
         </label>
       </section>
-      <input type='submit' />
+      <section className='control-container'>
+        <label htmlFor='filters-form-submit'>
+          <span>&nbsp;</span>
+          <input type='submit' value='Update Filters' />
+        </label>
+      </section>
     </form>
   );
 };
 
 Filters.propTypes = {
   filters: React.PropTypes.object,
+  hasCities: React.PropTypes.bool,
   updateFilters: React.PropTypes.func,
 };
 

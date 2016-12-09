@@ -1,5 +1,6 @@
 import React from 'react';
 import Collections from '../collections';
+import styles from './city.css';
 
 export const City = ({
   addReview,
@@ -25,21 +26,26 @@ export const City = ({
   };
 
   const hasCollections = !collections.noneExist;
+  const hasNotRequestedCollections = appFuncs._.isEmpty(collections);
 
   return (
     <article>
-      <section>
-        <h2>
+      <style scoped type='text/css'>{styles}</style>
+      <section className='city-entry'>
+        <h4>
           {city.name}
-          <button
-            id='get-collections'
-            onClick={handleClick}
-            type='submit'
-            value='Get Collections'
-          >
-            Get Collections
-          </button>
-        </h2>
+          {
+            hasNotRequestedCollections &&
+            <button
+              id='get-collections'
+              onClick={handleClick}
+              type='submit'
+              value='Get Collections'
+              >
+                Get Collections
+              </button>
+          }
+        </h4>
         <section>
           {
             hasCollections ?

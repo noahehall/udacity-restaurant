@@ -1,5 +1,6 @@
 import React from 'react';
 import Reviews from 'components/cities/reviews';
+import styles from './restaurant.css';
 
 export const Restaurant = ({
   addReview,
@@ -42,42 +43,59 @@ export const Restaurant = ({
   };
 
   return (
-    <article>
-      <h4>
-        {restaurant.name}
+    <article className='restaurant-entry'>
+      <style scoped type='text/css'>{styles}</style>
+      <section>
+        <figure>
+          <figcaption>
+            <h5>
+              <a
+                href={restaurant.url}
+                target='_blank'
+                >
+                {restaurant.name}
+              </a>
+            </h5>
+          </figcaption>
+          <img
+            alt={`${restaurant.name} featured thumbnail`}
+            className='image-responsive'
+            src={restaurant.featured_image}
+          />
+        </figure>
+        <section className='restaurant-info'>
+          <div>
+            Cuisine: {restaurant.cuisines}
+          </div>
+          <div>
+            Avg Price for 2: {restaurant.average_cost_for_two}
+          </div>
+          <div>
+            5 Star Rating: {restaurant.user_rating.aggregate_rating}
+          </div>
+        </section>
         <button
-          id='get-reviews'
+          className='get-reviews'
           onClick={handleClick}
         >
           Get Reviews
         </button>
-      </h4>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='review-text'>
-          Review: <input id='review-text' />
-        </label>
-        <label htmlFor='user-name'>
-          Name: <input id='user-name' />
-        </label>
-        <input type='submit' value='submit' />
-      </form>
-      <section>
-        <a
-          href={restaurant.url}
-          target='_blank'
-          >
-          website
-        </a>
-        <div>
-          Cuisine: {restaurant.cuisines}
-        </div>
-        <div>
-          Avg Price for 2: {restaurant.average_cost_for_two}
-        </div>
-        <div>
-          5 Star Rating: {restaurant.user_rating.aggregate_rating}
-        </div>
       </section>
+      <form onSubmit={handleSubmit}>
+        <section className='control-container'>
+          <label htmlFor='review-text'>
+            <span>Review: </span>
+            <input id='review-text' />
+          </label>
+        </section>
+        <section className='control-container'>
+          <label htmlFor='user-name'>
+            <span>Name: </span>
+            <input id='user-name' />
+          </label>
+        </section>
+        <input type='submit' value='Add Review' />
+      </form>
       <article>
         {
           hasReviews ?

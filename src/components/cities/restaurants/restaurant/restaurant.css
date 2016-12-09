@@ -1,12 +1,24 @@
-.filters-form {
-  max-width: 300px;
-  margin: 0 auto;
-  font-size: 16px;
-  font-family: Muli;
+.restaurant-entry {
+  padding: 10px;
 
-  & input[type=submit] {
-    display: inline-block;
+  &:nth-child(even) {
+    background: #ccc;
+  }
+
+  & .get-reviews {
+    display: block;
     margin: 0 auto;
+  }
+
+  & .image-responsive {
+    height: auto;
+    width: 100%;
+  }
+
+  & figure {
+    & h5 {
+      text-align: center;
+    }
   }
 
   & .control-container {

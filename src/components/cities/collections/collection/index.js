@@ -30,18 +30,23 @@ export const Collection = ({
     });
   };
 
+  const hasRestaurants = !appFuncs._.isEmpty(restaurants);
+
   return (
     <article>
-      <h3>
+      <h5>
         {collection.title}
-        <button
-          id='get-restaurants'
-          onClick={handleClick}
-        >
-          Get Restaurants
-        </button>
-      </h3>
-      <div>{collection.description}</div>
+        {
+          !hasRestaurants &&
+          <button
+            id='get-restaurants'
+            onClick={handleClick}
+            >
+              Get Restaurants
+            </button>
+        }
+      </h5>
+      <section>{collection.description}</section>
       <Restaurants
         addReview={addReview}
         cityName={cityName}
