@@ -8,7 +8,7 @@ require('../.globals');
 import Promised from 'bluebird';
 import Idbstore from 'serviceworkers/idb/idb';
 const protocol = self.location.protocol;
-appFuncs.console()(`protocol is: ${protocol}`);
+const hostname = self.location.hostname;
 
 const db = new Idbstore();
 db.dbPromise
@@ -27,10 +27,10 @@ self.addEventListener('install', (event) => {
     //'https://cdn.logrocket.com/LogRocket.min.js',
     'http://fonts.googleapis.com/css?family=Muli|Varela%20Round',
     'https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master',
-    `${protocol}//localhost:3000/container.js`,
-    `${protocol}//localhost:3000/favicon.ico`,
-    //`${protocol}//localhost:3000/js/bundle.js`,
-    //`${protocol}//localhost:3000/rootworker.js`,
+    `${protocol}//${hostname}:3000/container.js`,
+    `${protocol}//${hostname}:3000/favicon.ico`,
+    //`${protocol}//${hostname}:3000/js/bundle.js`,
+    //`${protocol}//${hostname}:3000/rootworker.js`,
   ];
 
   /**
@@ -72,9 +72,9 @@ self.addEventListener('activate', (event) =>
  */
 self.addEventListener('fetch', (event) => {
   const neverCacheUrls = [
-    `${protocol}//localhost:3000/js/bundle.js`,
+    `${protocol}//${hostname}:3000/js/bundle.js`,
     'https://logrocket-1356.appspot.com/v1/ingest',
-    `${protocol}//localhost:3000/rootworker.js`,
+    `${protocol}//${hostname}:3000/rootworker.js`,
   ];
 
   const neverCacheHttpMethods = [
