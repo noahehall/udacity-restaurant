@@ -277,6 +277,8 @@ gulp.task('checkconnection', (cb) =>
   })
 );
 
+gulp.task('exit', () => process.exit(0));
+
 gulp.task("default", gulpSequence(
   'checkconnection',
   'stylelint',
@@ -289,12 +291,15 @@ gulp.task("default", gulpSequence(
   "watch:server"
 ));
 
-gulp.task("prod", gulpSequence(
-  'copy:server-certs',
-  'copy:service-workers',
-  'bundle:client',
-  'bundle:server'
-));
+gulp.task("prod",
+  gulpSequence(
+    'copy:server-certs',
+    'copy:service-workers',
+    'bundle:client',
+    'bundle:server',
+    'exit'
+  )
+);
 
 gulp.task('lint', gulpSequence(
   'stylelint',
