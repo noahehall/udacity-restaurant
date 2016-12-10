@@ -5,11 +5,11 @@ This application is based on [this boilerplate project](https://github.com/noahe
 
 # Quick start
   - $ npm install #install all required npm modules
-  - $ npm run dev #start app on http://localhost:3000,
+  - $ npm run dev #start app on http://127.0.0.1:3000,
   - $ npm run prod #make product build in /dist, with server running on https://localhost:3000/
   - $ npm run test #test all test.js files within src/*
   - $ npm run eslint-unused #see all eslint rules not defined in .eslintrc
-  - $ npm run eslint #run eslint on all .js files within /src*
+  - $ npm run lint #run eslint on all .js files within /src* and stylelint on all .css fiels in /src*
 # CI
   - [![Build Status](https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master)
 

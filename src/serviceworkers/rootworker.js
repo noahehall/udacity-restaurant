@@ -24,7 +24,7 @@ db.dbPromise
 self.addEventListener('install', (event) => {
   const urlsToPrefetch = [
     '/',
-    //'https://cdn.logrocket.com/LogRocket.min.js',
+    'https://cdn.logrocket.com/LogRocket.min.js',
     'https://fonts.googleapis.com/css?family=Muli|Varela%20Round',
     'https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master',
     `${protocol}//${hostname}:3000/container.js`,
