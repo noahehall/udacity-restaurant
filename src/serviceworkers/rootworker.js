@@ -25,7 +25,7 @@ self.addEventListener('install', (event) => {
   const urlsToPrefetch = [
     '/',
     //'https://cdn.logrocket.com/LogRocket.min.js',
-    'http://fonts.googleapis.com/css?family=Muli|Varela%20Round',
+    'https://fonts.googleapis.com/css?family=Muli|Varela%20Round',
     'https://api.travis-ci.org/noahehall/udacity-restaurant.svg?branch=master',
     `${protocol}//${hostname}:3000/container.js`,
     `${protocol}//${hostname}:3000/favicon.ico`,
@@ -119,7 +119,7 @@ self.addEventListener('fetch', (event) => {
                 }
 
                 // never insert blobs with 0 bytes
-                appFuncs.console('error')(`blob size 0: ${blob}`);
+                appFuncs.console('error')(`blob size 0: ${blob}, ${event.request.url}`);
 
                 return false;
               },

@@ -22,7 +22,7 @@ class App extends React.Component {
   getScripts = () => {
     const nav = typeof navigator !== 'undefined' ? navigator : null;
 
-    return 0 && (appConsts.nodeOnline || (nav && nav.onLine)) ?
+    return appConsts.nodeOnline || (nav && nav.onLine) ?
       [
         { src: 'https://cdn.logrocket.com/LogRocket.min.js', type: 'text/javascript' },
         // to log session urls in production console.log(LogRocket.recordingURL);
@@ -42,17 +42,17 @@ class App extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           link={[
             {
-              'href': 'http://fonts.googleapis.com/css?family=Muli|Varela%20Round',
+              'href': `${appConsts.isProd ? 'https' : 'http'}://fonts.googleapis.com/css?family=Muli|Varela%20Round`,
               'rel': 'stylesheet',
               type:'text/css',
             },
           ]}
           meta={[
-            { content: 'React F Your Starterkit by @noahedwardhall', name: 'description' },
+            { content: 'F Your Starterkit by @noahedwardhall', name: 'description' },
             { content: 'Home', property: 'og:title' },
           ]}
           script={this.getScripts()}
-          title='For Your Progressive React Starterkit'
+          title='For Your Progressive Starterkit Needs'
         />
         <style scoped type='text/css'>{styles}</style>
         <nav>
